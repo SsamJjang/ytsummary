@@ -1,10 +1,13 @@
 from google import genai
 from google.genai import types
+import os
+from dotenv import load_dotenv
 
+api_key = os.getenv('API_KEY')
 
 def generate(body):
     client = genai.Client(
-        api_key="AIzaSyDgS3PMz0_II-CFqz3UBMrbCw1eFq96kCk",
+        api_key="api_key",
     )
 
     model = "gemini-flash-lite-latest"
