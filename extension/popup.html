@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YouTube Captions Summary</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      width: 320px;
+      padding: 20px;
+      font-family: 'Segoe UI', 'Noto Sans KR', sans-serif;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      color: #fff;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .header h1 {
+      font-size: 18px;
+      margin-bottom: 4px;
+    }
+
+    .header p {
+      font-size: 12px;
+      color: #888;
+    }
+
+    .status {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 8px;
+      padding: 12px;
+      margin-bottom: 16px;
+      text-align: center;
+    }
+
+    .status.youtube {
+      border-left: 3px solid #ff0000;
+    }
+
+    .status.not-youtube {
+      border-left: 3px solid #888;
+    }
+
+    .status-icon {
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+
+    .status-text {
+      font-size: 13px;
+      color: #ccc;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 12px 16px;
+      border: none;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-bottom: 10px;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      box-shadow: 0 2px 10px rgba(102, 126, 234, 0.4);
+    }
+
+    .btn-primary:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 20px rgba(102, 126, 234, 0.6);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.1);
+      color: #ccc;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .settings {
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .settings label {
+      display: block;
+      font-size: 12px;
+      color: #888;
+      margin-bottom: 6px;
+    }
+
+    .settings input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.05);
+      color: #fff;
+      font-size: 12px;
+    }
+
+    .settings input::placeholder {
+      color: #666;
+    }
+
+    .settings input:focus {
+      outline: none;
+      border-color: #667eea;
+    }
+
+    .save-status {
+      font-size: 11px;
+      color: #4caf50;
+      margin-top: 6px;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .save-status.show {
+      opacity: 1;
+    }
+
+    .footer {
+      margin-top: 16px;
+      text-align: center;
+      font-size: 11px;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>📝 YouTube Caption Summarizer</h1>
+    <p>Analyze videos rapidly with AI</p>
+  </div>
+
+  <div id="status" class="status">
+    <div class="status-icon">🔍</div>
+    <div class="status-text">Analyzing page...</div>
+  </div>
+
+  <button id="summarizeBtn" class="btn btn-primary" disabled>
+    🎯 Summarize Captions
+  </button>
+
+  <button id="showPanelBtn" class="btn btn-secondary" disabled>
+    📌 View Summarization Panel
+  </button>
+
+  <div class="settings">
+    <label for="webhookUrl">Make.com Webhook URL</label>
+    <input type="text" id="webhookUrl" placeholder="https://hook.make.com/...">
+    <div id="saveStatus" class="save-status">✓ Saved</div>
+  </div>
+
+  <div class="footer">
+    Use on Youtube.
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>
